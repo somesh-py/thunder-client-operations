@@ -101,8 +101,8 @@ h1,h2,h3,h4,h5,h6 {
 #btn
 {
     position:absolute;
-    margin-left:1100px;
-    margin-top:50px;
+    margin-left:1150px;
+    margin-top:80px;
 }
 </style>
 <script>
@@ -179,7 +179,7 @@ $.each( properties, function( i, val ) {
 });
 </script>
 <body>
-    <button id="btn" class="btn btn-outline-primary"><a href="/" style="color: black;">Show All Mobile Data</a></button>
+    <button id="btn" class="btn btn-outline-primary"><a href="/" style="color: black;">Back to Operations</a></button>
 <table>
     <div class="container">
         
@@ -193,23 +193,26 @@ $.each( properties, function( i, val ) {
                 <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Edit</a></div>
                 <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Delete</a></div>
             </div>
+			<form method="post" action="updatedetails">
+			{% csrf_token %}
 			{% if data %}
 			{% for i in data %}
 
             <div class="table-content">	
 				<div class="table-row">
 
-                    <div class="table-data">{{i.id}}</div>
-                    <div class="table-data">{{i.name}}</div>
-                    <div class="table-data">{{i.price}}</div>
-                    <div class="table-data">{{i.cat}}</div>
-                    <div class="table-data">{{i.cmp}}</div>
-					<div class="table-data"><button  class="btn btn-outline-warning"><a href="showdataone" style="color:palevioletred;">Edit</a></button></div>
-					<div class="table-data"><button  class="btn btn-outline-danger"><a href="showdataone" style="color:palevioletred;">Delete</a></button></div>
+                    <div class="table-data">{{i.id}}<input type="hidden" name="id" value="{{i.id}}" /></div>
+                    <div class="table-data"><input name="name" value="{{i.name}}" /></div>
+                    <div class="table-data"><input name="price" value="{{i.price}}" /></div>
+                    <div class="table-data"><input name="cat" value="{{i.cat}}" /></div>
+                    <div class="table-data"><input name="cmp" value="{{i.cmp}}" /></div>
+					<div class="table-data"><button type="submit"  class="btn btn-outline-warning">Update</button></div>
+					<div class="table-data"><button  class="btn btn-outline-danger"><a href="deletedetail?id={{i.id}}" style="color:palevioletred;">Delete</a></button></div>
                 </div>
             </div>
 			{% endfor %}
 			{% endif %}
+			</form>
         </div>
     </div>
 </table>

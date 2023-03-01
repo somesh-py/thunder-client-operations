@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +40,7 @@
   }
 </style>
 
-<body>
+<body style=" background-repeat:no-repeat;background-image:url({% static 'img/' %});">
   <h1>Mobile Data</h1>
   <button class="btn btn-outline-primary"><a href="alldata" style="color: black;">Show All Mobile Data</a></button>
 

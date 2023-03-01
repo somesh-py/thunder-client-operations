@@ -24,4 +24,6 @@ urlpatterns = [
     path('alldata',views.alldata),
     path('showdataone',views.showdataone),
     path('adddetails',views.adddetails),
+    path('updatedetails',views.updatedetails),
+    path('deletedetail',views.deletedetail),
 ]
